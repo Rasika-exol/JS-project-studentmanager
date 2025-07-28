@@ -11,7 +11,7 @@ function handleFormSubmit(event) {
   };
   axios
     .post(
-      "https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students",
+      "https://crudcrud.com/api/bc3dcff297684fb8b88b6ffaa5952ca6/students",
       studentDetails
     )
     .then((response) => {
@@ -34,7 +34,7 @@ function displayStudent(student) {
   deleteBtn.onclick = () => {
     axios
       .delete(
-        `https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students/${student._id}`
+        `https://crudcrud.com/api/bc3dcff297684fb8b88b6ffaa5952ca6/students/${student._id}`
       )
       .then(() => {
         li.remove();
@@ -44,12 +44,30 @@ function displayStudent(student) {
   };
   li.appendChild(deleteBtn);
 
+  const editBtn = document.createElement("button");
+  editBtn.textContent = "Edit";
+  editBtn.onclick = () => {
+    document.getElementById("name").value = student.name;
+    document.getElementById("mobile").value = student.mobile;
+    document.getElementById("address").value = student.address;
+    axios
+      .delete(
+        `https://crudcrud.com/api/bc3dcff297684fb8b88b6ffaa5952ca6/students/${student._id}`
+      )
+      .then(() => {
+        li.remove();
+        updateStudentCount();
+      })
+      .catch((err) => console.log(err));
+  };
+  li.appendChild(editBtn);
+
   document.getElementById("student-list").appendChild(li);
 }
 
 function updateStudentCount() {
   axios
-    .get("https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students")
+    .get("https://crudcrud.com/api/bc3dcff297684fb8b88b6ffaa5952ca6/students")
     .then((res) => {
       document.getElementById("student-count").textContent = res.data.length;
     });
@@ -57,7 +75,7 @@ function updateStudentCount() {
 
 document.addEventListener("DOMContentLoaded", () => {
   axios
-    .get("https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students")
+    .get("https://crudcrud.com/api/bc3dcff297684fb8b88b6ffaa5952ca6/students")
     .then((response) => {
       document.querySelector("ul").innerHTML = "";
       for (let i = 0; i < response.data.length; i++) {
