@@ -38,3 +38,16 @@ function updateStudentCount() {
       document.getElementById("student-count").textContent = res.data.length;
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  axios
+    .get("https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students")
+    .then((response) => {
+      document.querySelector("ul").innerHTML = "";
+      for (let i = 0; i < response.data.length; i++) {
+        displayStudent(response.data[i]);
+      }
+      updateStudentCount();
+    })
+    .catch((error) => console.log(error));
+});
