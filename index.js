@@ -30,3 +30,11 @@ function displayStudent(student) {
   li.textContent = `${student.name} ${student.mobile} ${student.address} `;
   document.getElementById("student-list").appendChild(li);
 }
+
+function updateStudentCount() {
+  axios
+    .get("https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students")
+    .then((res) => {
+      document.getElementById("student-count").textContent = res.data.length;
+    });
+}
