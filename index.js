@@ -9,8 +9,16 @@ function handleFormSubmit(event) {
     mobile: event.target.mobile.value,
     address: event.target.address.value,
   };
-
-  displayStudent(studentDetails);
+  axios
+    .post(
+      "https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students",
+      studentDetails
+    )
+    .then((response) => {
+      displayStudent(response.data);
+      updateStudentCount();
+    })
+    .catch((error) => console.log(error));
 
   document.getElementById("name").value = "";
   document.getElementById("mobile").value = "";
@@ -19,6 +27,6 @@ function handleFormSubmit(event) {
 
 function displayStudent(student) {
   const li = document.createElement("li");
-  li.textContent = `${student.name} ${student.mobile} ${student.address}`;
+  li.textContent = `${student.name} ${student.mobile} ${student.address} `;
   document.getElementById("student-list").appendChild(li);
 }

@@ -3,36 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Student Tracker</title>
   </head>
   <body>
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Student Manager</title>
-        <link rel="stylesheet" href="style.css" />
-      </head>
-      <body>
-        <h1>Student Manager</h1>
-        <h3>All Students: <span id="student-count">0</span></h3>
+    <h1>Student Manager</h1>
+    <h3>All Students: <span id="student-count">0</span></h3>
 
-        <form id="student-form">
-          <label>Name:</label>
-          <input type="text" id="name" required />
-          <label>Mobile:</label>
-          <input type="text" id="mobile" required />
-          <label>Address:</label>
-          <input type="text" id="address" required />
-          <button type="submit">Add</button>
-        </form>
+    <form id="student-form">
+      <label>Name:</label>
+      <input type="text" id="name" required />
+      <label>Mobile:</label>
+      <input type="text" id="mobile" required />
+      <label>Address:</label>
+      <input type="text" id="address" required />
+      <button type="submit">Add</button>
+    </form>
 
-        <h2>All students</h2>
-        <ul id="student-list"></ul>
+    <h2>All students</h2>
+    <ul id="student-list"></ul>
 
-        <script src="index.js"></script>
-      </body>
-    </html>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
