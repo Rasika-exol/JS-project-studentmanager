@@ -28,6 +28,22 @@ function handleFormSubmit(event) {
 function displayStudent(student) {
   const li = document.createElement("li");
   li.textContent = `${student.name} ${student.mobile} ${student.address} `;
+
+  const deleteBtn = document.createElement("button");
+  deleteBtn.textContent = "Delete";
+  deleteBtn.onclick = () => {
+    axios
+      .delete(
+        `https://crudcrud.com/api/27fc1f00087d4954a6f1b4804dbaea3e/students/${student._id}`
+      )
+      .then(() => {
+        li.remove();
+        updateStudentCount();
+      })
+      .catch((err) => console.log(err));
+  };
+  li.appendChild(deleteBtn);
+
   document.getElementById("student-list").appendChild(li);
 }
 
